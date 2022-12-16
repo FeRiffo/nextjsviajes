@@ -2,10 +2,20 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
-
+import { useEffect } from 'react'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  const resAPi = ()=>{
+    fetch('http://localhost:3000/api/users/add')
+    .then(response=>response.json())
+    .then(data=>console.log(data))
+    .catch(error=>console.log(error))
+  }
+  useEffect(()=>{
+    resAPi();
+  })
+
   return (
     <>
       <Head>
